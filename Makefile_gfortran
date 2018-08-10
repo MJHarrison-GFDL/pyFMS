@@ -10,10 +10,9 @@ py_time_interp: build_libs/libfms.a
 	python setup.py install
 
 build_libs/libfms.a:
-	(cd fms;tar xvf fms_env.tar)
-	(cd fms;rm -rf FMS;git clone https://github.com/MJHarrison-GFDL/FMS.git;cd FMS;git checkout fast_mpp_io)
-	(. activate pyFMS;cd build_libs;cp build_libs.csh tmp;\
+	(cd fms;git clone https://github.com/NOAA-GFDL/mkmf.git)
+	(cd src;rm -rf FMS;git clone https://github.com/MJHarrison-GFDL/FMS.git;cd FMS;git checkout fast_mpp_io)
+	(. activate MIDAS;cd build_libs;cp build_libs.csh tmp;\
 	  sed -e 's/#set platform = linux/set platform = linux/' < tmp > tmp2;\
 	  sed -e 's/set platform = gfdl_hpcs/#set platform = gfdl_hpcs/' < tmp2 > build_libs.csh;\
-	  chmod +x ./build_libs.csh;./build_libs.csh)
-
+	  chmod +x ./build_libs.csh;echo $CONDA_PREFIX;./build_libs.csh)
