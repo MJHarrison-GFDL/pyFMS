@@ -3,7 +3,7 @@
 set workdir = $cwd
 set root = $cwd:h
 set platform = linux
-####################set platform = gfdl_hpcs
+########################set platform = gfdl_hpcs
 
 
 set maledir=$root/src
@@ -13,7 +13,7 @@ set sharedir     = $root/fms/FMS
 set includedir   = $sharedir/{include,mosaic}
 set sysincludedir = $CONDA_PREFIX/include
 set mppincludedir   = $sharedir/mpp/include
-set mkmfTemplate = $root/fms/site/$platform/mkmf.template
+set mkmfTemplate = $root/mkmf/templates/linux-gnu.mk
 set npes = 1
 set cppDefs      = ("-Duse_netCDF -Duse_netCDF3 -DMAXXGRID=2.e7 -DnoFort2003" )
 set MKMF         = $root/fms/bin/mkmf
@@ -51,4 +51,3 @@ else
     unset echo
     echo NOTE: make succeeded.
 endif
-
